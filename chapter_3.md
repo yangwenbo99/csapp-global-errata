@@ -54,7 +54,8 @@ A in %rdi, val in %esi
 
 ## Page 304, Practice Problem 3.41
 
-In fact, some of the sub-problems are impossible to answer. According to 
+In fact, some of the sub-problems are impossible to answer, and some of the 
+answers from page 279 is definitely incorrect. According to 
 C11 (6.7.2.1 14), the way of _alignment_ of `struct`'s members are 
 _implement-defined_.
 > Each non-bit-field member of a structure or union object is aligned in an implementation-defined manner appropriate to its type.
@@ -101,5 +102,12 @@ int main (void) {
 
 	return 0;
 }
+```
+
+Which yields the following result
+```
+0x   0-0x   8:	78 56 34 12 78 56 34 12 
+0x   8-0x  10:	11 11 22 22 10 56  0  0 
+0x  10-0x  17:	f8 88 89 89 89 89 89 89 
 ```
 
