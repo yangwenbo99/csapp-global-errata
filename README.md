@@ -8,6 +8,9 @@ Unfortunately, according to the author's website,
 
 Thus, many mistakes of the global edition have not been corrected. This repository is a collection of those mistakes haven't been corrected in the authors' website.
 
+## Contributions
+
+All contrinutions are welcomed. You can either send a pull request directly or create a new issue. 
 
 ## Preface
 
