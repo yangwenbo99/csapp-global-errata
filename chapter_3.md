@@ -54,6 +54,28 @@ the assembly code, it should be like:
 
 And the answer from page 370 should also be changed.
 
+### Page 264, Practice Problem 3.26 
+
+```
+10      andl	$0, %eax
+```
+should be changed to
+```
+10      andl	$1, %eax
+```
+
+### Page 267, Practice Problem 3.28
+
+line 2 and 3 of the assembly code should be changed to
+```
+2	  movl $0, %edx
+3	  movl $64, %eax
+```
+and line 10 should be changed to
+```
+10	  subq $1, %rdx
+```
+
 ### Page 274, Figure 3.24 (code of Practice Problem 3.31)
 
 The second line of (the comment of) the assembly code, `%rdi and %rdi` 
