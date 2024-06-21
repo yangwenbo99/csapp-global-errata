@@ -7,6 +7,8 @@
     1. [Page 240, Practical Problem 3.13 (corrected)](#page-240-practical-problem-313-corrected)
     1. [Page 248, Practice Problem 3.16](#page-248-practice-problem-316)
     1. [Page 258, Practice Problem 3.23](#page-258-practice-problem-323)
+    1. [Page 264, Practice Problem 3.26](#page-264-practice-problem-326)
+    1. [Page 267, Practice Problem 3.28](#page-267-practice-problem-328)
     1. [Page 274, Figure 3.24 (code of Practice Problem 3.31)](#page-274-figure-324-code-of-practice-problem-331)
 1. [Section 3.8 Array Allocation and Access](#section-38-array-allocation-and-access)
     1. [Page 298, Practice Problem 3.40](#page-298-practice-problem-340)
@@ -53,6 +55,28 @@ the assembly code, it should be like:
 ```
 
 And the answer from page 370 should also be changed.
+
+### Page 264, Practice Problem 3.26 
+
+```
+10      andl	$0, %eax
+```
+should be changed to
+```
+10      andl	$1, %eax
+```
+
+### Page 267, Practice Problem 3.28
+
+line 2 and 3 of the assembly code should be changed to
+```
+2	  movl $0, %edx
+3	  movl $64, %eax
+```
+and line 10 should be changed to
+```
+10	  subq $1, %rdx
+```
 
 ### Page 274, Figure 3.24 (code of Practice Problem 3.31)
 
