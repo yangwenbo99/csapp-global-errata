@@ -1,4 +1,4 @@
-# Chapter 2 Representing and Manipulating Information
+## Table of contents
 
 1. [Section 2.1 Information Storage](#section-21-information-storage)
    1. [Page 73, Practice Problem 2.1](#page-73-practice-problem-21-solution-page-179)
@@ -7,7 +7,11 @@
    2. [Page 118, Practice Problem 2.24](#page-118-practice-problem-224-solution-page-186)
 3. [Section 2.3 Integer Arithmetic](#section-23-integer-arithmetic)
    1. [Page 131, Practice Problem 2.33](#page-131-practice-problem-233-solution-page-189)
+4. [Section 2.4 Floating Point](#section-24-floating-point)
+   1. [Page 147, Practice Problem 2.45](#page-147-practice-problem-245-solution-page-193)
 
+---
+  
 ## Section 2.1 Information Storage
 ### Page 73, Practice Problem 2.1 <small>(solution page 179)</small>
 
@@ -48,6 +52,7 @@ Therefore, the answer is:
 ```
 0xAE49
 ```
+
 
 ## Section 2.2 Integer Representations
 
@@ -94,3 +99,14 @@ Therefore, the third row of the table given in the solution is wrong, and should
 | Hex ($x$) | Decimal ($x$) | Decimal ( $-^t_4 x$ ) | Hex ($-^t_4 x$) 
 | --- | --- | --- | --- |
 | 9 | -7 | 7 | 7 | 
+
+## Section 2.4 Floating Point
+
+### Page 147, Practice Problem 2.45 <small>(solution page 193)</small>
+
+- As listed in the [official errata](https://csapp.cs.cmu.edu/3e/errata.html), the fractional value in the third row should be $\frac{25}{16}$ instead of $\frac{5}{16}$. After this correction, the problem correctly aligns with the solution.
+
+
+
+
+
