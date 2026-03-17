@@ -10,7 +10,7 @@ Thus, many mistakes of the global edition have not been corrected. This reposito
 
 ## Contributions
 
-All contrinutions are welcomed. You can either send a pull request directly or create a new issue. 
+All contributions are welcome. You can either send a pull request directly or create a new issue. 
 
 ## Preface
 
