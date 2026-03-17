@@ -3,6 +3,9 @@
 
 <!-- vim-markdown-toc GFM -->
 
+1. [Section 3.5 Arithmetic and Logical Operations](#section-35-arithmetic-and-logical-operations)
+	1. [Page 233, Practice Problem 3.10](#page-233-practice-problem-310)
+
 1. [Section 3.6 Control](#section-36-control)
     1. [Page 240, Practical Problem 3.13 (corrected)](#page-240-practical-problem-313-corrected)
     1. [Page 248, Practice Problem 3.16](#page-248-practice-problem-316)
@@ -16,22 +19,82 @@
 
 <!-- vim-markdown-toc -->
 
+## Section 3.5 Arithmetic and Logical Operations
+### Page 233, Practice Problem 3.10
+
+- The assembly provided doesn't match the C code in the solution given. The solution given is the following:
+
+```c
+// solution to practice problem 3.10: in page 365
+short p1 = y | z;
+short p2 = p1 >> 9;
+short p3 = ~p2;
+short p4 = y - p3;
+return p4; // return is ommited in the book's solution (for simplicity since you don't need to alter it), but it is present in the problem statement and I add it here because it is important for us to see why the problem is wrong. 
+```
+
+- The assembly provided in the problem statement is:
+
+```asm
+arith3:
+	orq %rsi, %rdx
+	sarq $9, %rdx
+	notq %rdx
+	movq %rdx, %bax
+	subq %rsi, %rbx
+	ret
+```
+
+The first problem we can notice in the snippet above is the `%bax` register. This register doesn't exist and is probably a typo for `%rax`.
+
+Now the assembly becomes:
+
+```asm
+arith3:
+	orq %rsi, %rsi
+	sarq $9, %rdx
+	notq %rdx
+	movq %rdx, %rax  ; Changed %bax to %rax
+	subq %rsi, %rbx
+	ret
+```
+
+But this assembly code still doesn't match the solution provided. 
+
+By convention, function return values are stored into `%rax`, so the statement `movq %rdx, %rax` indicates that this function will return whatever value is in `%rdx` at that point (in this case it's `p3`).
+
+We can infer this because in the C solution p4 is equal to `y - p3`, and in the assembly code this subtraction is being made after setting the return value. However, the C code clearly states that `p4` should be returned, and not `p3`
+
+Additionally, the subq instruction, right now, would translate to `p3 - y`, because `subq S, D = D <-- D - S`, which doesn't match the book's proposed solution (`y - p3`).
+
+The problem statement's assembly code should be:
+
+```asm
+arith3:
+  orq     %rsi, %rdx
+  sarq    $9, %rdx
+  notq    %rdx
+  subq    %rdx, %rsi  ; subtract before moving, and change the order of the operands to match the book's proposed solution
+  movq    %rsi, %rax  ; move to p4 (%rsi) to %rax (as stated earlier, by convention return values go into %rax)
+  ret
+```
+
 ## Section 3.6 Control
 ### Page 240, Practical Problem 3.13 (corrected)
 D. 
-```
+```asm
 cmpq  %rsi, %rdi
 setne %a
 ```
 The last line should be changed to
-```
+```asm
 cmpq  %rsi, %rdi
 setne %al
 ```
 
 
 ### Page 248, Practice Problem 3.16
-```
+```asm
 cond:
   testq %rdi, %rdi
   je    .L1
@@ -48,7 +111,7 @@ The fifth line should be changed to `  cmpq  (%rsi), %rdi`
 
 The C code and assembly code do not correspond to each other, if I change
 the assembly code, it should be like:
-```
+```asm
 7       leaq    5(rbp, %rcx), %rbx
 ```
 
