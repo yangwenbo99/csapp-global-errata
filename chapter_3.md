@@ -9,6 +9,7 @@
 1. [Section 3.6 Control](#section-36-control)
     1. [Page 240, Practical Problem 3.13 (corrected)](#page-240-practical-problem-313-corrected)
     1. [Page 248, Practice Problem 3.16](#page-248-practice-problem-316)
+    1. [Page 255, Practice Problem 3.21](#page-255-practice-problem-321)  
     1. [Page 258, Practice Problem 3.23](#page-258-practice-problem-323)
     1. [Page 274, Figure 3.24 (code of Practice Problem 3.31)](#page-274-figure-324-code-of-practice-problem-331)
 1. [Section 3.8 Array Allocation and Access](#section-38-array-allocation-and-access)
@@ -106,6 +107,10 @@ cond:
 ```
 
 The fifth line should be changed to `  cmpq  (%rsi), %rdi`
+
+### Page 255, Practice Problem 3.21
+
+In the solution: `else if (y > 10)` should be changed to `else if (y >= 10)`, correctly matching the `cmovge` instruction in the assembly code. For y > 10 to be correct, the assembly instruction would have to be cmovg instead.
 
 ### Page 258, Practice Problem 3.23 
 
