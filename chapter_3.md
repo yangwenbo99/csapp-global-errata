@@ -11,6 +11,7 @@
     1. [Page 248, Practice Problem 3.16](#page-248-practice-problem-316)
     1. [Page 255, Practice Problem 3.21](#page-255-practice-problem-321)  
     1. [Page 258, Practice Problem 3.23](#page-258-practice-problem-323)
+    1. [Page 264, Practice Problem 3.26](#page-264-practice-problem-326) 
     1. [Page 274, Figure 3.24 (code of Practice Problem 3.31)](#page-274-figure-324-code-of-practice-problem-331)
 1. [Section 3.8 Array Allocation and Access](#section-38-array-allocation-and-access)
     1. [Page 298, Practice Problem 3.40](#page-298-practice-problem-340)
@@ -121,6 +122,24 @@ the assembly code, it should be like:
 ```
 
 And the answer from page 370 should also be changed.
+
+### Page 264, Practice Problem 3.26
+
+In the problem statement assembly code, in the last 2 lines, we have:
+
+```asm
+andl $0, %eax
+ret
+```
+This translates to C code as (note: variable *val* is in %eax):
+```c
+return val & 0;
+``` 
+This always returns 0 regardless of the value that `val` holds. 
+
+In the answer for letter C, we see that the function is supposed to be a **parity** checker. For this to be the case, we would need to compute `val & 1`.   
+
+This means the `andl $0, %eax` instruction on the problem statement should be changed to `andl $1, %eax` (in C: `return val & 1;`)
 
 ### Page 274, Figure 3.24 (code of Practice Problem 3.31)
 
