@@ -18,6 +18,7 @@
 1. [Section 3.9 Heterogeneous Data Structure](#section-39-heterogeneous-data-structure)
     1. [Page 304, Practice Problem 3.41](#page-304-practice-problem-341)
         1. [Aside: How can you know?](#aside-how-can-you-know)
+    1. [Page 305, Practice Problem 3.42](#page-305-practice-problem-342)
 
 <!-- vim-markdown-toc -->
 
@@ -120,8 +121,10 @@ the assembly code, it should be like:
 ```asm
 7       leaq    5(rbp, %rcx), %rbx
 ```
-
 And the answer from page 370 should also be changed.
+
+Also, the instruction `idivq` on line 4 is taking two operands, but in reality it takes only one operand. See [this](https://stackoverflow.com/questions/57998998/csapp-example-uses-idivq-with-two-operands)
+
 
 ### Page 264, Practice Problem 3.26
 
@@ -219,5 +222,10 @@ Which yields the following result
 0x  10-0x  17:	f8 88 89 89 89 89 89 89 
 ```
 
+### Page 305, Practice Problem 3.42
 
+In the solution for question B: "[...]. Function fun computes the sum of the element values in the list". This is true for the north american edition of the book, since they have an `addq` instruction in line 5 of the assembly in the problem statement. 
 
+However, in the global edition the function name was changed to `test` and the instruction on line 5 was changed to `imulq`.
+
+Thus, the correct answer to question B should be: "[...]. Function test computes the **product** of the element values in the list."
