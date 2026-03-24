@@ -121,8 +121,10 @@ the assembly code, it should be like:
 ```asm
 7       leaq    5(rbp, %rcx), %rbx
 ```
-
 And the answer from page 370 should also be changed.
+
+Also, the instruction `idivq` on line 4 is taking two operands, but in reality it takes only one operand. See [this](https://stackoverflow.com/questions/57998998/csapp-example-uses-idivq-with-two-operands)
+
 
 ### Page 264, Practice Problem 3.26
 
