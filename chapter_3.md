@@ -19,7 +19,9 @@
     1. [Page 304, Practice Problem 3.41](#page-304-practice-problem-341)
         1. [Aside: How can you know?](#aside-how-can-you-know)
     1. [Page 305, Practice Problem 3.42](#page-305-practice-problem-342)
-    1. [Page 311, Practice Problem 3.44](#page-311-practice-problem-344) 
+    1. [Page 311, Practice Problem 3.44](#page-311-practice-problem-344)
+    1. [Page 311, Practice Problem 3.45](#page-311-practice-problem-345)
+   		1. [Aside: How can I verify this?](#aside-how-can-i-verify-this)
 
 <!-- vim-markdown-toc -->
 
@@ -260,3 +262,52 @@ packet-beta
 
 - Total size: 88 bytes (32 + 32 + 24)
 - Alignment requirement: 8 bytes
+
+### Page 311, Practice Problem 3.45
+
+The problem is with `short d`. Short requires a 2 byte alignment. There is no need to put it in byte 16; 14 is fine, since its divisible by 2. The book is adding extra unnecessary offset in the solution.
+
+| Field | Size | Offset
+| --- | --- | --- |
+| a | 8 | 0 |
+| b | 4 | 8 |
+| c | 1 | 12 |
+| **1 byte of padding needed here** | 1 | 13 |
+| d | 2 | 14 |
+| e | 8 | 16 | 
+| f | 8 | 24 |
+| g | 4 | 32 | 
+| h | 8 | 40 |
+
+- Total size: 48 bytes
+
+#### Aside: How can I verify this?
+You can verify this by running:
+
+```c
+#include <stdio.h>
+#include <stddef.h>
+
+struct rec // same struct that was given in the problem
+{
+    int *a; float b; char c; short d; 
+    long e; double f; int g; char *h;
+};
+
+int main() 
+{   
+    printf("Element:\t");
+    printf("a\tb\tc\td\te\tf\tg\th\n");
+
+    printf("Offset: \t");
+    printf("%zu\t", offsetof(struct rec, a));
+    printf("%zu\t", offsetof(struct rec, b));
+    printf("%zu\t", offsetof(struct rec, c));
+    printf("%zu\t", offsetof(struct rec, d));
+    printf("%zu\t", offsetof(struct rec, e));
+    printf("%zu\t", offsetof(struct rec, f));
+    printf("%zu\t", offsetof(struct rec, g));
+    printf("%zu\n", offsetof(struct rec, h));
+    return 0;
+}
+```
