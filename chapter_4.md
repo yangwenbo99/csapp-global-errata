@@ -25,7 +25,7 @@ long rsum(long *start, long count)
 rsum:
   xorq %rax,%rax      # Set return value to 0
   andq %rsi,o/orsi    # Set condition codes
-  je return           # If count == 0, return 0
+  jle return           # If count <= 0, return 0
   
   pushq rbx           # Save callee-saved register
   
