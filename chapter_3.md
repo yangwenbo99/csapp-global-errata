@@ -57,7 +57,7 @@ Now the assembly becomes:
 
 ```asm
 arith3:
-	orq %rsi, %rsi
+	orq %rsi, %rdx
 	sarq $9, %rdx
 	notq %rdx
 	movq %rdx, %rax  ; Changed %bax to %rax
